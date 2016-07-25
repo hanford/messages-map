@@ -13,8 +13,8 @@ export default ({ data }) => {
   return (
     <Treemap
       title={'Messages treemap'}
-      height={ 1280 }
-      width={ 1280 }
+      height={ 650 }
+      width={ 1400 }
       data={ treeMapData }
     />
   )
