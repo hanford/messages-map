@@ -1,12 +1,13 @@
 import React from 'react'
 import { Treemap } from 'react-vis'
+import sortOn from 'sort-on'
 
 export default ({ data }) => {
   if (!data.length) return null
 
   const treeMapData = {
     title: '',
-    children: data
+    children: sortOn(data, '-size')
   }
 
   return (

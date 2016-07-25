@@ -15,7 +15,7 @@ export default class App extends Component {
   }
 
   componentWillMount () {
-    request('../messages.json', (err, data) => this.setState({ data: JSON.parse(data) }))
+    request('../messages.json', { json: true }, (err, data) => this.setState({ data }))
   }
 
   render() {

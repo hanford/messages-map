@@ -10,6 +10,7 @@
     "react-addons-shallow-compare": "~15.2.1",
     "react-dom": "~15.2.1",
     "react-vis": "~0.4.2",
+    "sort-on": "~1.3.0",
     "xhr-request": "~1.0.1"
   },
   "scripts": {
