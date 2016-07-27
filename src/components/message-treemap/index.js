@@ -5,9 +5,11 @@ import sortOn from 'sort-on'
 export default ({ data }) => {
   if (!data.length) return null
 
+  data = sortOn(data, '-size')
+
   const treeMapData = {
     title: '',
-    children: sortOn(data, '-size')
+    children: data
   }
 
   return (

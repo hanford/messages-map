@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'xhr-request'
+import sortOn from 'sort-on'
 
 import './App.css'
 
@@ -15,7 +16,32 @@ export default class App extends Component {
   }
 
   componentWillMount () {
-    request('../messages.json', { json: true }, (err, data) => this.setState({ data }))
+    request('../messages.json', { json: true }, (err, data) => {
+      data = data
+        .filter(d => d.title.split(', ').length === 2)
+        .filter(Boolean)
+
+      data = data
+        .map(function (t) {
+          let usernames = t.title
+            .split(', ')
+
+          let indexOfUser = usernames
+            .findIndex((element, index, array) => element === 'Jack Hanford')
+
+          usernames.splice(indexOfUser, 1)
+
+          t.title = usernames.toString()
+
+          return t
+        })
+
+      data = sortOn(data, '-size')
+
+      data = data.splice(0, 30)
+
+      this.setState({ data })
+    })
   }
 
   render() {
